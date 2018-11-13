@@ -3,7 +3,7 @@ import re
 
 
 text = open("sobser.txt","r")
-text_split = re.split(r'[,.\s]', text)
+text_split = re.split(r'[,\.\s]', text)
 
 
 morph = pymorphy2.MorphAnalyzer()
