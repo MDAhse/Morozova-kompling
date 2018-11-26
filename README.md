@@ -4,5 +4,5 @@
 3. Слово “добром” определил как наречие.
 4. Слово “издали” определил как глагол, хотя там это наречие. 
 
-►/play sax
+
 ![alt text](https://st.depositphotos.com/1165406/1765/i/450/depositphotos_17654235-stock-photo-cpa-cat-looking-out-through.jpg)
