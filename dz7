@@ -1,0 +1,39 @@
+import nltk
+nltk.download('punkt')
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+from nltk.stem.snowball import SnowballStemmer
+text = "А пес остался в подворотне и, страдая от изуродованного бока, прижался к холодной массивной стене, задохся и твердо решил, что больше отсюда никуда не пойдет, тут и сдохнет в подворотне. Отчаяние повалило его. На душе у него было до того больно и горько, до того одиноко и страшно, что мелкие собачьи слезы, как пупырышки, вылезали из глаз и тут же засыхали. Испорченный бок торчал свалявшимися промерзшими комьями, а между ними глядели красные зловещие пятна от вара. До чего бессмысленны, тупы и жестоки повара. «Шарик» – она назвала его! Какой он к черту Шарик! Шарик – это значит круглый, упитанный, глупый, овсянку жрет, сын счастливых родителей, а он лохматый, долговязый и рваный, шляйка поджарая, бездомный пес... Впрочем, спасибо ей на добром слове... Дверь через улицу в ярко освещенном магазине хлопнула, и из нее показался гражданин. Именно гражданин, а не товарищ, и даже вернее всего – господин. Ближе – яснее – господин. Вы думаете, я сужу по пальто? Вздор. Пальто теперь очень многие и из пролетариев носят. Правда, воротники не такие, об этом и говорить нечего, но все же издали можно спутать. А вот по глазам – тут уж и вблизи и издали не спутаешь. О, глаза – значительная вещь. Вроде барометра. Все видно – у кого великая сушь в душе, кто ни за что ни про что может ткнуть носком сапога в ребра, а кто сам всякого боится. Вот последнего холуя именно и приятно бывает тяпнуть за лодыжку. Боишься – получай. Раз боишься – значит стоишь... Р-р-р... гау-гау..."
+nltk.download('stopwords')
+tokens = word_tokenize(text)
+with open('sobster.txt', 'tw', encoding='utf-8') as f:
+    pass
+text1 = open("sobser.txt","w")
+text1.write(text)
+download_stopwords = stopwords.words('russian')
+stop_text = []
+
+for i in tokens:
+    if i not in download_stopwords:
+        stop_text.append(i)
+text1.write(stop_text)
+text1.write("стоп-слов всего:",len(tokens)-len(stop_text))
+text1.write("стоп-слов в процентах:",(len(tokens)-len(stop_text))/len(tokens)*100,'%')
+stems = []
+stemmer = SnowballStemmer("russian")
+for token in tokens:
+    token = stemmer.stem(token)
+    if token != "":
+        stems.append(token)
+b=int(len(stop_text))
+i=1
+while i<=b:
+    text1.write(tokens[i],':',stems[i])
+    i=i+1
+text1.close()
+print("word_tokenize:", tokens)
+print(len(tokens))
+print(stop_text)
+print(len(tokens)-len(stop_text))
+print((len(tokens)-len(stop_text))/len(tokens)*100,'%')
+print("stems:", stems)
